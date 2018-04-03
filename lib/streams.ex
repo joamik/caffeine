@@ -31,6 +31,17 @@ defmodule Caffeine.Natural do
     end
 end
 
+defmodule Caffeine.Integer do
+    def stream(n) do
+        rest = fn -> stream(increment(n)) end
+        Caffeine.Stream.construct(n, rest)
+    end
+
+    defp increment(n) do
+        n + 1
+    end
+end
+
 defmodule Caffeine.Square do
     def stream do
         stream(0)
