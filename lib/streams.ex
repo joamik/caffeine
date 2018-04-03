@@ -125,3 +125,24 @@ defmodule Caffeine.List do
     end
 end
 
+defmodule Caffeine.Factorial do
+    def stream do
+        nil
+    end
+end
+
+
+defmodule Caffeine.PrimeNumber do
+    def stream do
+        nil
+    end
+end
+
+
+defmodule Caffeine.File do
+    def stream do
+        nil
+    end
+end
+
+
