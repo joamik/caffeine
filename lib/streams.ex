@@ -98,4 +98,30 @@ defmodule Caffeine.Odd do
     end
 end
 
+defmodule Caffeine.Range do
+    def stream(a, b) when a < b do
+        rest = fn -> stream(increment(a), b) end
+        Caffeine.Stream.construct(a, rest)
+    end
+
+    def stream(a, b) when a == b do
+        [a, []]
+    end
+
+    def stream(a, b) when a > b do
+        raise ArgumentError, message: "The arguments not valid for range"
+    end
+
+    defp increment(n) do
+        n + 1
+    end
+end
+
+defmodule Caffeine.List do
+    def stream(l) when is_list(l) do
+        [head | tail] = l
+        rest = fn -> stream(tail) end
+        Caffeine.Stream.construct(head, rest)
+    end
+end
 
