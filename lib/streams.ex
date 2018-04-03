@@ -23,3 +23,22 @@ defmodule Caffeine.Natural do
         n + 1
     end
 end
+
+defmodule Caffeine.Square do
+    def stream do
+        stream(0)
+    end
+
+    defp stream(n) do
+        rest = fn -> stream(increment(n)) end
+        Caffeine.Stream.construct(square(n), rest)
+    end
+
+    defp increment(n) do
+        n + 1
+    end
+
+    defp square(n) do
+        :math.pow(n, 2)
+    end
+end
