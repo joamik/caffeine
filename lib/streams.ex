@@ -118,10 +118,18 @@ defmodule Caffeine.Range do
 end
 
 defmodule Caffeine.List do
+    def stream([a | []]) do
+        [a, []]
+    end
+
     def stream(l) when is_list(l) do
         [head | tail] = l
         rest = fn -> stream(tail) end
         Caffeine.Stream.construct(head, rest)
+    end
+
+    def stream(_) do
+        raise ArgumentError, message: "The argument is not a list"
     end
 end
 
