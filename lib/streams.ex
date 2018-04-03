@@ -17,7 +17,7 @@ defmodule Caffeine.Value do
 end
 
 defmodule Caffeine.Natural do
-    def stream() do
+    def stream do
         stream(0)
     end
 
