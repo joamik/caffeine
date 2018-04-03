@@ -55,3 +55,25 @@ defmodule Caffeine.Square do
         :math.pow(n, 2)
     end
 end
+
+defmodule Caffeine.Even do
+    require Integer
+    # require macro instructs the compiler to load the specified 
+    # module before compiling the containing module
+    
+    def stream do
+        Caffeine.Natural.stream() 
+        |> Caffeine.Stream.filter(&Integer.is_even/1)
+    end
+end
+
+defmodule Caffeine.Odd do
+    require Integer
+    
+    def stream do
+        Caffeine.Natural.stream()
+        |> Caffeine.Stream.filter(&Integer.is_odd/1)
+    end
+end
+
+
