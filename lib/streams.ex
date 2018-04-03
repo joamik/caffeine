@@ -131,18 +131,14 @@ defmodule Caffeine.Factorial do
     end
 end
 
-
 defmodule Caffeine.PrimeNumber do
     def stream do
         nil
     end
 end
 
-
 defmodule Caffeine.File do
     def stream do
         nil
     end
 end
-
-
