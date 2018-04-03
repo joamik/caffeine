@@ -32,9 +32,13 @@ defmodule Caffeine.Natural do
 end
 
 defmodule Caffeine.Integer do
-    def stream(n) do
+    def stream(n) when is_integer(n) do
         rest = fn -> stream(increment(n)) end
         Caffeine.Stream.construct(n, rest)
+    end
+
+    def stream(_) do
+        raise ArgumentError, message: "The argument is not integer"
     end
 
     defp increment(n) do
