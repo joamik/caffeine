@@ -42,3 +42,16 @@ defmodule Caffeine.Square do
         :math.pow(n, 2)
     end
 end
+
+# different approach
+
+defmodule Caffeine.Square do
+    def stream do
+        Caffeine.Natural.stream()
+        |> Caffeine.Stream.map(&Caffeine.Square.square/1)
+    end
+
+    def square(n) do
+        :math.pow(n, 2)
+    end
+end
