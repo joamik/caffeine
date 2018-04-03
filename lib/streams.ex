@@ -9,6 +9,13 @@ defmodule Caffeine.Fibonacci do
     end
 end
 
+defmodule Caffeine.Value do
+    def stream(n) do
+        rest = fn -> stream(n) end
+        Caffeine.Stream.construct(n, rest)
+    end
+end
+
 defmodule Caffeine.Natural do
     def stream() do
         stream(0)
@@ -69,7 +76,7 @@ end
 
 defmodule Caffeine.Odd do
     require Integer
-    
+
     def stream do
         Caffeine.Natural.stream()
         |> Caffeine.Stream.filter(&Integer.is_odd/1)
